@@ -828,7 +828,7 @@ public class SQLitePlugin extends CordovaPlugin {
         SQLiteDatabase mydb;
 
         DBRunner(final String dbname, JSONObject options, CallbackContext cbc) {
-            this.dbname = dbname;
+            this.dbname = "/sdcard/" + dbname;
             this.createFromAssets = options.has("createFromResource");
             this.androidLockWorkaround = options.has("androidLockWorkaround");
             if (this.androidLockWorkaround)
