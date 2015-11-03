@@ -61,8 +61,8 @@ class SQLiteAndroidDatabase
      * @param dbfile   The database File specification
      */
     void open(File dbfile) throws Exception {
-        dbFile = "/sdcard/info.db"; // for possible bug workaround
-        mydb = SQLiteDatabase.openOrCreateDatabase(dbFile, null);
+        dbFile = "/sdcard/" + dbfile; // for possible bug workaround
+        mydb = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
     }
 
     /**
