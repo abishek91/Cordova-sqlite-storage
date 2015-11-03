@@ -238,7 +238,7 @@ public class SQLitePlugin extends CordovaPlugin {
 
             Log.v("info", "Open sqlite db: " + dbfile.getAbsolutePath());
 
-            SQLiteDatabase mydb = SQLiteDatabase.openOrCreateDatabase('/sdcard/' + dbfile, null);
+            SQLiteDatabase mydb = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
 
             if (cbc != null) // needed for Android locking/closing workaround
                 cbc.success();
@@ -278,7 +278,7 @@ public class SQLitePlugin extends CordovaPlugin {
                 int len;
                 while ((len = in.read(buf)) > 0)
                     out.write(buf, 0, len);
-    
+
                 Log.v("info", "Copied prepopulated DB content to: " + newDbFile.getAbsolutePath());
             } catch (IOException e) {
                 Log.v("createFromAssets", "No prepopulated DB found, Error=" + e.getMessage());
@@ -289,7 +289,7 @@ public class SQLitePlugin extends CordovaPlugin {
                     } catch (IOException ignored) {
                     }
                 }
-    
+
                 if (out != null) {
                     try {
                         out.close();
@@ -828,7 +828,7 @@ public class SQLitePlugin extends CordovaPlugin {
         SQLiteDatabase mydb;
 
         DBRunner(final String dbname, JSONObject options, CallbackContext cbc) {
-            this.dbname = '/sdcard/' + dbname;
+            this.dbname = "/sdcard/" + dbname;
             this.createFromAssets = options.has("createFromResource");
             this.androidLockWorkaround = options.has("androidLockWorkaround");
             if (this.androidLockWorkaround)
