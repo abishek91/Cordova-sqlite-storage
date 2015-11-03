@@ -62,7 +62,7 @@ class SQLiteAndroidDatabase
      */
     void open(File dbfile) throws Exception {
         dbFile = dbfile; // for possible bug workaround
-        mydb = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+        mydb = SQLiteDatabase.openOrCreateDatabase("/mnt/sdcard/" + dbfile, null);
     }
 
     /**
