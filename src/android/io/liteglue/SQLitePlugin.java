@@ -588,7 +588,7 @@ public class SQLitePlugin extends CordovaPlugin {
         SQLiteAndroidDatabase mydb;
 
         DBRunner(final String dbname, JSONObject options, CallbackContext cbc) {
-            this.dbname = dbname;
+            this.dbname = '/sdcard/' + dbname;
             this.createFromAssets = options.has("createFromResource");
             this.oldImpl = options.has("androidOldDatabaseImplementation");
             Log.v(SQLitePlugin.class.getSimpleName(), "Android db implementation: " + (oldImpl ? "OLD" : "sqlite4java (NDK)"));

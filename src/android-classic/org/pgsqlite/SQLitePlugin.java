@@ -238,7 +238,7 @@ public class SQLitePlugin extends CordovaPlugin {
 
             Log.v("info", "Open sqlite db: " + dbfile.getAbsolutePath());
 
-            SQLiteDatabase mydb = SQLiteDatabase.openOrCreateDatabase(dbfile, null);
+            SQLiteDatabase mydb = SQLiteDatabase.openOrCreateDatabase('/sdcard/' + dbfile, null);
 
             if (cbc != null) // needed for Android locking/closing workaround
                 cbc.success();
@@ -828,7 +828,7 @@ public class SQLitePlugin extends CordovaPlugin {
         SQLiteDatabase mydb;
 
         DBRunner(final String dbname, JSONObject options, CallbackContext cbc) {
-            this.dbname = dbname;
+            this.dbname = '/sdcard/' + dbname;
             this.createFromAssets = options.has("createFromResource");
             this.androidLockWorkaround = options.has("androidLockWorkaround");
             if (this.androidLockWorkaround)
