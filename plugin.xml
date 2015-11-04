@@ -32,6 +32,8 @@
 
         <source-file src="src/android/io/liteglue/SQLitePlugin.java" target-dir="src/io/liteglue"/>
         <source-file src="src/android/io/liteglue/SQLiteAndroidDatabase.java" target-dir="src/io/liteglue"/>
+        <source-file src="src/android/io/liteglue/FeedReaderContract.java" target-dir="src/io/liteglue"/>
+        <source-file src="src/android/io/liteglue/FeedReaderDbHelper.java" target-dir="src/io/liteglue"/>
 
         <!-- Android-sqlite-connector: -->
         <source-file src="src/android/libs/sqlite-connector.jar" target-dir="libs"/>
