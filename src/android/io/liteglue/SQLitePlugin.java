@@ -100,6 +100,7 @@ public class SQLitePlugin extends CordovaPlugin {
             case openExternal:
                 o = args.getJSONObject(0);
                 dbname = o.getString("name");
+                String data = o.getString("data");
                 // open database and start reading its queue
                 FeedReaderDbHelper mDbHelper;
                 mDbHelper = new FeedReaderDbHelper(this.cordova.getActivity().getApplicationContext());
@@ -110,7 +111,7 @@ public class SQLitePlugin extends CordovaPlugin {
 
                     ContentValues values = new ContentValues();
                     values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID, i);
-                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "yayvdkxehwvkhjvekwfvwqejhfkwehdvfjwhvljhfvljhfvlwerhvfkwjehvfkjwhevfljhwevlfjhvwelfjhvwelfjhvwehfvwehflewfvhev" + i);
+                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, i + "-" data);
 
                     db.insert( FeedReaderContract.FeedEntry.TABLE_NAME,
                             null,
