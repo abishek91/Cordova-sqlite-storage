@@ -544,6 +544,48 @@
       }
       return new SQLitePlugin(openargs, okcb, errorcb);
     }),
+    opendbExternal: argsArray(function(args) {
+      var dblocation, errorcb, first, okcb, openargs;
+      if (args.length < 1) {
+        return null;
+      }
+      first = args[0];
+      openargs = null;
+      okcb = null;
+      errorcb = null;
+      if (first.constructor === String) {
+        openargs = {
+          name: first
+        };
+        if (args.length >= 5) {
+          okcb = args[4];
+          if (args.length > 5) {
+            errorcb = args[5];
+          }
+        }
+      } else {
+        openargs = first;
+        if (args.length >= 2) {
+          okcb = args[1];
+          if (args.length > 2) {
+            errorcb = args[2];
+          }
+        }
+      }
+      dblocation = !!openargs.location ? dblocations[openargs.location] : null;
+      openargs.dblocation = dblocation || dblocations[0];
+      if (!!openargs.createFromLocation && openargs.createFromLocation === 1) {
+        openargs.createFromResource = "1";
+      }
+      if (!!openargs.androidDatabaseImplementation && openargs.androidDatabaseImplementation === 2) {
+        openargs.androidOldDatabaseImplementation = 1;
+      }
+      if (!!openargs.androidLockWorkaround && openargs.androidLockWorkaround === 1) {
+        openargs.androidBugWorkaround = 1;
+      }
+      //return new SQLitePlugin(openargs, okcb, errorcb);
+      return cordova.exec(success, error, "SQLitePlugin", "openExternal", [args]);
+    }),
     deleteDb: function(first, success, error) {
       var args, dblocation;
       args = {};
@@ -568,6 +610,7 @@
       isSQLitePlugin: true
     },
     openDatabase: SQLiteFactory.opendb,
+    openDatabaseExternal: SQLiteFactory.opendbExternal,
     deleteDatabase: SQLiteFactory.deleteDb
   };
 

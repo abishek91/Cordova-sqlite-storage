@@ -94,6 +94,13 @@ public class SQLitePlugin extends CordovaPlugin {
                 this.startDatabase(dbname, o, cbc);
                 break;
 
+            case openExternal:
+                o = args.getJSONObject(0);
+                dbname = o.getString("name");
+                // open database and start reading its queue
+                mDbHelper = new FeedReaderDbHelper(getBaseContext());
+                break;
+
             case close:
                 o = args.getJSONObject(0);
                 dbname = o.getString("path");
