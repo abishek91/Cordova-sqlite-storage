@@ -106,12 +106,11 @@ public class SQLitePlugin extends CordovaPlugin {
                 SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
-                id++;
                 for(int i = 0 ; i < 1000; i++){
 
                     ContentValues values = new ContentValues();
-                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID, id);
-                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "yayvdkxehwvkhjvekwfvwqejhfkwehdvfjwhvljhfvljhfvlwerhvfkwjehvfkjwhevfljhwevlfjhvwelfjhvwelfjhvwehfvwehflewfvhev" + id);
+                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID, i);
+                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "yayvdkxehwvkhjvekwfvwqejhfkwehdvfjwhvljhfvljhfvlwerhvfkwjehvfkjwhevfljhwevlfjhvwelfjhvwelfjhvwehfvwehflewfvhev" + i);
 
                     db.insert( FeedReaderContract.FeedEntry.TABLE_NAME,
                             null,
