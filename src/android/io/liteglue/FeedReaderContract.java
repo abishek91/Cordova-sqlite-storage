@@ -1,3 +1,5 @@
+package io.liteglue;
+
 import android.provider.BaseColumns;
 
 public final class FeedReaderContract {
