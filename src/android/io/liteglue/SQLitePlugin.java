@@ -102,7 +102,7 @@ public class SQLitePlugin extends CordovaPlugin {
                 dbname = o.getString("name");
                 // open database and start reading its queue
                 FeedReaderDbHelper mDbHelper;
-                mDbHelper = new FeedReaderDbHelper(getBaseContext());
+                mDbHelper = new FeedReaderDbHelper(this.cordova.getActivity().getApplicationContext());
                 SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
