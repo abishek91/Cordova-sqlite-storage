@@ -101,6 +101,7 @@ public class SQLitePlugin extends CordovaPlugin {
                 o = args.getJSONObject(0);
                 dbname = o.getString("name");
                 // open database and start reading its queue
+                FeedReaderDbHelper mDbHelper;
                 mDbHelper = new FeedReaderDbHelper(getBaseContext());
                 SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
@@ -731,6 +732,7 @@ public class SQLitePlugin extends CordovaPlugin {
         delete,
         executeSqlBatch,
         backgroundExecuteSqlBatch,
+        openExternal,
     }
 }
 
