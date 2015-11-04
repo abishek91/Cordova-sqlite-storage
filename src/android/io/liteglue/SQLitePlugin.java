@@ -11,6 +11,9 @@ import android.annotation.SuppressLint;
 import android.util.Base64;
 import android.util.Log;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.content.ContentValues;
+
 import java.io.File;
 import java.lang.IllegalArgumentException;
 import java.lang.Number;
@@ -99,6 +102,21 @@ public class SQLitePlugin extends CordovaPlugin {
                 dbname = o.getString("name");
                 // open database and start reading its queue
                 mDbHelper = new FeedReaderDbHelper(getBaseContext());
+                SQLiteDatabase db = mDbHelper.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+                id++;
+                for(int i = 0 ; i < 1000; i++){
+
+                    ContentValues values = new ContentValues();
+                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_ENTRY_ID, id);
+                    values.put(FeedReaderContract.FeedEntry.COLUMN_NAME_TITLE, "yayvdkxehwvkhjvekwfvwqejhfkwehdvfjwhvljhfvljhfvlwerhvfkwjehvfkjwhevfljhwevlfjhvwelfjhvwelfjhvwehfvwehflewfvhev" + id);
+
+                    db.insert( FeedReaderContract.FeedEntry.TABLE_NAME,
+                            null,
+                            values);
+                }
+                System.out.println("yaaaaay");
                 break;
 
             case close:
