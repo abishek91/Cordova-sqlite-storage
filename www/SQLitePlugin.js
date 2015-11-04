@@ -544,7 +544,7 @@
       }
       return new SQLitePlugin(openargs, okcb, errorcb);
     }),
-    opendbExternal: argsArray(function(args) {
+    opendbExternal: argsArray(function(args, success, error) {
       var dblocation, errorcb, first, okcb, openargs;
       if (args.length < 1) {
         return null;
@@ -584,7 +584,7 @@
         openargs.androidBugWorkaround = 1;
       }
       //return new SQLitePlugin(openargs, okcb, errorcb);
-      return cordova.exec(success, error, "SQLitePlugin", "openExternal", [args]);
+      return cordova.exec(success, error, "SQLitePlugin", "openExternal", [openargs]);
     }),
     deleteDb: function(first, success, error) {
       var args, dblocation;
